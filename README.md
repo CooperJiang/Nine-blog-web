@@ -20,7 +20,7 @@
 * 后台管理：[vue3](https://v3.cn.vuejs.org/)、[fantastic-admin](https://fantastic-admin.netlify.app/)、[vite](https://vitejs.cn/)、[Echars](https://echarts.baidu.com/)
 * 后端服务：[NodeJs](https://nodejs.org/zh-cn/)(版本:14.14.6) 、[NestJs](https://docs.nestjs.cn/)、[Typeorm](https://typeorm.biunav.com/)、[socket.io](https://socket.io/)、[Mysql]()、
 
- 上面是用到的一些基础技术栈，注意后端的包管理器为**pnpm**，其包管理器可能导致依赖安装失败、因为项目很多技术栈我也是为了练手也是第一次使用，很多地方可能已经有些楼后了，遇到分歧请参考官方文档
+ 上面是用到的一些基础技术栈，注意后端的包管理器为**pnpm**，其包管理器可能导致依赖安装失败、因为项目很多技术栈我也是为了练手也是第一次使用，很多地方可能已经有些落后了，遇到分歧请参考官方文档
 
 
 
@@ -73,6 +73,18 @@
 
 
 
+##### 文章详情页
+
+![](https://public-1300678944.cos.ap-shanghai.myqcloud.com/blog/1652780451187image.png)
+
+
+
+##### 工具使用页
+
+![](https://public-1300678944.cos.ap-shanghai.myqcloud.com/blog/1652780609473image.png)
+
+
+
 ##### 博客工具箱页面 
 
 ![](https://public-1300678944.cos.ap-shanghai.myqcloud.com/blog/1652779257607image.png)
@@ -91,7 +103,21 @@
 
 
 
+##### 后台管理首页
+
+![](https://public-1300678944.cos.ap-shanghai.myqcloud.com/blog/1652780039693image.png)
+
+
+
+##### 后台博客管理
+
+![](https://public-1300678944.cos.ap-shanghai.myqcloud.com/blog/1652780093194image.png)
+
 
 
 * 更多细节等你来提......
+
+
+
+* B站视频分享： [查看视频，期待三连](https://www.bilibili.com/video/BV1ZS4y1B7SH/)
 
