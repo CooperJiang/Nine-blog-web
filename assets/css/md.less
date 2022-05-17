@@ -1,0 +1,31 @@
+.markdown-body {
+  &.bg{
+    background-image: linear-gradient(90deg,rgba(60,10,30,.04) 3%,transparent 0),linear-gradient(1turn,rgba(60,10,30,.04) 3%,transparent 0);
+    background-size: 20px 20px;
+    background-position: 10%;
+  }
+  ul,
+  ol {
+    list-style: disc;
+  }
+
+  pre {
+    margin: 16px 0 !important;
+    padding: 0 !important;
+    background-color: #2b2b2b !important;
+    box-shadow: 0 0 8px hsl(0deg 0% 43% / 45%);
+    &::before {
+      content: "";
+      display: block;
+      height: 30px;
+      width: 100%;
+      margin-bottom: -7px;
+      background: url('../images/mac-icon.png') 10px 10px no-repeat;
+      background-size: 40px;
+    }
+    code {
+      display: block !important;
+      margin: 16px !important;
+    }
+  }
+}

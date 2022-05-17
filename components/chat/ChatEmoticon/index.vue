@@ -1,0 +1,153 @@
+<template>
+  <div class="emotion">
+    <div class="emotion-header">
+      <input
+        ref="input"
+        v-model="keyword"
+        type="text"
+        placeholder="找到你喜欢的表情包吧[请输入中文]"
+        @keydown.enter="search"
+        @input="input"
+      />
+      <div class="emotion-header-btn" @click="search">
+        <icon icon="search" />
+        搜索
+      </div>
+    </div>
+
+    <div v-loading="loading" class="emotion-content">
+      <emotion
+        v-if="!emoticonList.length"
+        :style="{ border: 'none' }"
+        width="98%"
+        height="100%"
+        :padding="0"
+        bg-color="transparent"
+        @emotion="
+          (emoji) => {
+            $emit('emotion', emoji)
+          }
+        "
+      />
+      <div v-else class="emotion-content-emoji">
+        <div v-for="(url, index) in emoticonList" :key="index" class="resulu">
+          <img
+            loading="lazy"
+            :src="url"
+            class="resulu-pic"
+            @click="
+              () => {
+                $emit('sendEmoji', url)
+              }
+            "
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import Emotion from '@/components/base/Emotion/Emotion.vue'
+import Icon from '@/components/base/Icon'
+
+export default {
+  components: { Emotion, Icon },
+  data() {
+    return {
+      keyword: null,
+      emoticonList: [],
+      loading: false
+    }
+  },
+  computed: {},
+  watch: {},
+  created() {},
+  mounted() {},
+  methods: {
+    async search() {
+      if (!this.keyword) return
+      this.loading = true
+      try {
+        const res = await this.$API.chat.emoticon({ keyword: this.keyword })
+        this.emoticonList = res
+        this.loading = false
+      } catch (error) {
+        this.loading = false
+      }
+    },
+    input(e) {
+      if (!e.target.value) {
+        this.emoticonList = []
+      }
+    }
+  }
+}
+</script>
+<style lang="less" scoped>
+.emotion {
+  padding: 0 10px;
+  border-top: 1px solid #eee;
+  &-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e5e5e5;
+    transition: all 0.3s;
+    font-size: 13px;
+    color: #999;
+    border-radius: 5px;
+    margin: 7px 0;
+    input {
+      padding: 8px 16px;
+      flex: 1;
+      font-size: 13px;
+      outline: none;
+      border: none;
+      color: #999;
+      background: transparent;
+      &::placeholder {
+        color: #ccc;
+        font-size: 14px;
+      }
+    }
+    &-btn {
+      padding: 9px 18px;
+      border-left: 1px solid #e5e5e5;
+      user-select: none;
+      &:hover {
+        filter: brightness(0.8);
+        border-left: 1px solid transparent;
+      }
+      &:active {
+        filter: brightness(1.2);
+      }
+    }
+  }
+  &-content {
+    height: 275px;
+    user-select: none;
+    overflow: hidden;
+    overflow-y: auto;
+    &-emoji {
+      display: flex;
+      flex-wrap: wrap;
+      img {
+        width: 82px;
+        height: 82px;
+        margin: 6px;
+        border-radius: 8px;
+        border: 1px solid #eee;
+        padding: 0;
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-drag: none;
+        transition: all 0.3s;
+        &:active {
+          transform: scale(1.3);
+        }
+      }
+    }
+  }
+}
+</style>

@@ -1,0 +1,81 @@
+.@{prefix}-@{container} {
+  width: 1280px;
+  padding-left: @columns-padding;
+  padding-right: @columns-padding;
+  margin-right: auto;
+  margin-left: auto;
+  box-sizing: border-box;
+  &:extend(.clearfix all);
+
+  @media screen and (min-width: @breakpoints-xs) {
+    width: auto;
+  }
+
+  @media screen and (min-width: @breakpoints-sm) {
+    max-width: @containerMaxWidth-sm;
+  }
+
+  @media screen and (min-width: @breakpoints-md) {
+    max-width: @containerMaxWidth-md;
+  }
+
+  @media screen and (min-width: @breakpoints-lg) {
+    max-width: @containerMaxWidth-lg;
+  }
+
+  @media screen and (min-width: @breakpoints-xl) {
+    max-width: @containerMaxWidth-xl;
+  }
+}
+
+.@{prefix}-@{row-name} {
+  min-height: 1px;
+  margin-left: -@columns-padding;
+  margin-right: -@columns-padding;
+  &:extend(.clearfix all);
+}
+
+[class*="@{prefix}-@{columns-name}"] {
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding-right: @columns-padding;
+  padding-left: @columns-padding;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+@media screen and (min-width: @breakpoints-xs) {
+  .render-col(xs);
+}
+
+@media screen and (min-width: @breakpoints-sm) {
+  .render-col(sm);
+}
+
+@media screen and (min-width: @breakpoints-md) {
+  .render-col(md);
+}
+
+@media screen and (min-width: @breakpoints-lg) {
+  .render-col(lg);
+}
+
+@media screen and (min-width: @breakpoints-xl) {
+  .render-col(xl);
+}
+
+
+.render-col-normal(@length: 1) when (@length <= @grid-count) {
+  .@{prefix}-@{columns-name}-@{length} {
+    width: percentage(@length/@grid-count);
+  }
+  .render-col-normal(@length + 1);
+}
+
+.render-col(@type: lg, @length: 1) when (@length <=@grid-count) {
+  .@{prefix}-@{columns-name}-@{type}-@{length} {
+    width: percentage(@length/@grid-count);
+  }
+  .render-col(@type, @length + 1);
+}
