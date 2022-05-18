@@ -180,7 +180,8 @@ export default {
         }
       })
       const { mp3, mp4, title } = res
-      const prefix = Config.baseURL
+      /* 开发环境下可能出现跨域，可以先调用生产的接口或者本地开发的时候不预览视频 */
+      const prefix = process.env.NODE_ENV === 'development' ? 'https://api.jiangly.com' : Config.baseURL
       this.preVideoUrl = `${prefix}/api/tools/douyinload?url=${mp4}`
       Object.assign(this, { mp3, mp4, title })
     },

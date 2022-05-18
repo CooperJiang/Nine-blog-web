@@ -117,6 +117,7 @@
 
 * 更多细节等你来提......
 
+# 管理账号： admin  密码： 123456
 
 
 * B站视频分享： [查看视频，期待三连](https://www.bilibili.com/video/BV1ZS4y1B7SH/)
